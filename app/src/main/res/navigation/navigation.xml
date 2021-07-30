@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/toDoHome">
+    <fragment
+        android:id="@+id/toDoHome"
+        android:name="com.maharaja.todo_sonal.screens.ToDoHome"
+        android:label="fragment_to_do_home"
+        tools:layout="@layout/fragment_to_do_home"
+        app:startDestination="@id/navigate_to_toDoDetail">
+        <action
+            android:id="@+id/navigate_to_toDoAdd"
+            app:destination="@id/toDoAdd"
+            app:enterAnim="@android:anim/fade_in" />
+        <action
+            android:id="@+id/navigate_to_toDoDetail"
+            app:destination="@id/toDoDetail" />
+        <action
+            android:id="@+id/navigate_to_toDoEdit"
+            app:destination="@id/toDoEdit" />
+    </fragment>
+    <fragment
+        android:id="@+id/toDoAdd"
+        android:name="com.maharaja.todo_sonal.screens.ToDoAdd"
+        android:label="fragment_to_do_add"
+        tools:layout="@layout/fragment_to_do_add" >
+        <action
+            android:id="@+id/navigate_to_toDoHome"
+            app:destination="@id/toDoHome"
+            app:enterAnim="@android:anim/fade_in" />
+    </fragment>
+    <fragment
+        android:id="@+id/toDoDetail"
+        android:name="com.maharaja.todo_sonal.screens.ToDoDetail"
+        android:label="fragment_to_do_detail"
+        tools:layout="@layout/fragment_to_do_detail" >
+        <action
+            android:id="@+id/navigate_to_toDoHome"
+            app:destination="@id/toDoHome" />
+    </fragment>
+    <fragment
+        android:id="@+id/toDoEdit"
+        android:name="com.maharaja.todo_sonal.screens.ToDoEdit"
+        android:label="fragment_to_do_edit"
+        tools:layout="@layout/fragment_to_do_edit" >
+        <action
+            android:id="@+id/navigate_to_toDoHome"
+            app:destination="@id/toDoHome" />
+    </fragment>
+</navigation>
