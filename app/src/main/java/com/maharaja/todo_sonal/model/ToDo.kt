@@ -1,3 +1,3 @@
 package com.maharaja.todo_sonal.model
 
-data class ToDo(val todo: String?=null,val date: String?=null)
+data class ToDo(var todo: String?=null,var date: String?=null)

@@ -15,7 +15,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.maharaja.todo_sonal.R
 
-import com.maharaja.todo_sonal.controller.ToDoControler
+import com.maharaja.todo_sonal.controller.ToDoController
 import com.maharaja.todo_sonal.model.ToDo
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -23,7 +23,7 @@ import java.time.format.DateTimeFormatter
 
 class ToDoAdd : Fragment() {
 
-    private val todo = ToDoControler()
+    private val toDoController = ToDoController()
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
@@ -44,7 +44,7 @@ class ToDoAdd : Fragment() {
         view.findViewById<Button>(R.id.btnaddtodo).setOnClickListener {
             val todotext = view.findViewById<EditText>(R.id.addtodotext).text.toString()
             val result =
-                todo.addToDo(ToDo(todotext, LocalDateTime.now().format(DateTimeFormatter.ISO_DATE)))
+                toDoController.addToDo(ToDo(todotext, LocalDateTime.now().format(DateTimeFormatter.ISO_DATE)))
             if (result==true){
                 Toast.makeText(context,"ToDo Add Success",Toast.LENGTH_SHORT).show()
                 Navigation.findNavController(view).navigate(R.id.navigate_to_toDoHome)
