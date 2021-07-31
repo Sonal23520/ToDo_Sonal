@@ -15,4 +15,13 @@ class ToDoController {
     fun getToDo():DatabaseReference{
         return database
     }
+
+    fun deleteToDo(todo:String):Boolean{
+        database.child(todo).removeValue().addOnSuccessListener(return true)
+    }
+
+    fun updateToDo(todo:ToDo):Boolean{
+        todo.todo?.let { database.child(it).setValue(todo).addOnSuccessListener(return true)}
+        return false
+    }
 }

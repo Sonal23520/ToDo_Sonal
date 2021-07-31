@@ -20,14 +20,15 @@
 
         <TextView
             android:id="@+id/detailtext"
-            android:textColor="#606060"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="340dp"
             android:text="ToDo"
-            android:textSize="20sp"
+            android:textAlignment="center"
+            android:textColor="#606060"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -35,25 +36,25 @@
             app:layout_constraintTop_toBottomOf="@+id/include" />
 
         <Button
-            android:id="@+id/detail_edit_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="32dp"
-            android:backgroundTint="#2ECC71"
-            android:text="Delete"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/detailtext" />
-
-        <Button
             android:id="@+id/detail_delete_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="20dp"
             android:backgroundTint="#E74C3C"
-            android:text="Edit"
+            android:text="Delete"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detailtext" />
+
+        <Button
+            android:id="@+id/detail_edit_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="32dp"
+            android:backgroundTint="#2ECC71"
+            android:text="Edit"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/detailtext" />
 
 

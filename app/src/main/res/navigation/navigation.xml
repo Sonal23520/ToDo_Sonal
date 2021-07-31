@@ -17,9 +17,6 @@
         <action
             android:id="@+id/navigate_to_toDoDetail"
             app:destination="@id/toDoDetail" />
-        <action
-            android:id="@+id/navigate_to_toDoEdit"
-            app:destination="@id/toDoEdit" />
     </fragment>
     <fragment
         android:id="@+id/toDoAdd"
@@ -40,8 +37,11 @@
             android:id="@+id/navigate_to_toDoHome"
             app:destination="@id/toDoHome" />
         <argument
-            android:name="todotext"
+            android:name="detail_todo_text"
             app:argType="string" />
+        <action
+            android:id="@+id/navigate_detail_to_edit"
+            app:destination="@id/toDoEdit" />
     </fragment>
     <fragment
         android:id="@+id/toDoEdit"
@@ -49,7 +49,10 @@
         android:label="fragment_to_do_edit"
         tools:layout="@layout/fragment_to_do_edit" >
         <action
-            android:id="@+id/navigate_to_toDoHome"
-            app:destination="@id/toDoHome" />
+            android:id="@+id/navigate_edit_to_detail"
+            app:destination="@id/toDoDetail" />
+        <argument
+            android:name="edit_todo_text"
+            app:argType="string" />
     </fragment>
 </navigation>
