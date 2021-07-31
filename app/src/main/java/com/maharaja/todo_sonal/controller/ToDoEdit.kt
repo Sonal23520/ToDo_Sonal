@@ -1,4 +1,4 @@
-package com.maharaja.todo_sonal.screens
+package com.maharaja.todo_sonal.controller
 
 import android.os.Build
 import android.os.Bundle
@@ -14,19 +14,14 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.Navigation
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
 import com.maharaja.todo_sonal.R
-import com.maharaja.todo_sonal.controller.ToDoController
+import com.maharaja.todo_sonal.dao.impl.CrudDaoImpl
 import com.maharaja.todo_sonal.model.ToDo
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 
 
 class ToDoEdit : Fragment() {
 
-    private val toDoController = ToDoController()
+    private val toDoController = CrudDaoImpl()
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(

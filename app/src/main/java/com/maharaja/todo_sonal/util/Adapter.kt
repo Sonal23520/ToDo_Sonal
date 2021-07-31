@@ -1,20 +1,14 @@
 package com.maharaja.todo_sonal.util
 
-import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.maharaja.todo_sonal.R
 import com.maharaja.todo_sonal.model.ToDo
-import com.maharaja.todo_sonal.screens.ToDoDetail
-import com.maharaja.todo_sonal.screens.ToDoHome
-import com.maharaja.todo_sonal.screens.ToDoHomeDirections
+import com.maharaja.todo_sonal.controller.ToDoHomeDirections
 
 class Adapter(private val userList : ArrayList<ToDo>) : RecyclerView.Adapter<Adapter.ViewHolder>() {
 

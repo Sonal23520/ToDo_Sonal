@@ -1,9 +1,7 @@
-package com.maharaja.todo_sonal.screens
+package com.maharaja.todo_sonal.controller
 
 import android.content.DialogInterface
-import android.graphics.drawable.Icon
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,13 +14,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.Navigation
 import com.maharaja.todo_sonal.R
-import com.maharaja.todo_sonal.controller.ToDoController
-import java.util.*
+import com.maharaja.todo_sonal.dao.impl.CrudDaoImpl
 
 
 class ToDoDetail : Fragment() {
 
-    private val toDoController = ToDoController()
+    private val toDoController = CrudDaoImpl()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

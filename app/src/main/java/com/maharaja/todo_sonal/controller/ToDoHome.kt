@@ -1,4 +1,4 @@
-package com.maharaja.todo_sonal.screens
+package com.maharaja.todo_sonal.controller
 
 import android.os.Bundle
 import android.view.*
@@ -14,7 +14,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.maharaja.todo_sonal.util.Adapter
 import com.maharaja.todo_sonal.R
-import com.maharaja.todo_sonal.controller.ToDoController
+import com.maharaja.todo_sonal.dao.impl.CrudDaoImpl
 import com.maharaja.todo_sonal.model.ToDo
 import java.util.*
 import kotlin.collections.ArrayList
@@ -22,7 +22,7 @@ import kotlin.collections.ArrayList
 
 class ToDoHome : Fragment() {
 
-    private var database = ToDoController().getToDo()
+    private var database = CrudDaoImpl().getToDo()
     private lateinit var todoRecyclerview : RecyclerView
     private lateinit var todoArrayList : ArrayList<ToDo>
     private lateinit var todoSearchview : SearchView

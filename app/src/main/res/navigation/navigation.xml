@@ -6,7 +6,7 @@
     app:startDestination="@id/toDoHome">
     <fragment
         android:id="@+id/toDoHome"
-        android:name="com.maharaja.todo_sonal.screens.ToDoHome"
+        android:name="com.maharaja.todo_sonal.controller.ToDoHome"
         android:label="fragment_to_do_home"
         tools:layout="@layout/fragment_to_do_home"
         app:startDestination="@id/navigate_to_toDoDetail">
@@ -21,7 +21,7 @@
     </fragment>
     <fragment
         android:id="@+id/toDoAdd"
-        android:name="com.maharaja.todo_sonal.screens.ToDoAdd"
+        android:name="com.maharaja.todo_sonal.controller.ToDoAdd"
         android:label="fragment_to_do_add"
         tools:layout="@layout/fragment_to_do_add" >
         <action
@@ -31,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/toDoDetail"
-        android:name="com.maharaja.todo_sonal.screens.ToDoDetail"
+        android:name="com.maharaja.todo_sonal.controller.ToDoDetail"
         android:label="fragment_to_do_detail"
         tools:layout="@layout/fragment_to_do_detail" >
         <action
@@ -51,7 +51,7 @@
     </fragment>
     <fragment
         android:id="@+id/toDoEdit"
-        android:name="com.maharaja.todo_sonal.screens.ToDoEdit"
+        android:name="com.maharaja.todo_sonal.controller.ToDoEdit"
         android:label="fragment_to_do_edit"
         tools:layout="@layout/fragment_to_do_edit" >
         <action
