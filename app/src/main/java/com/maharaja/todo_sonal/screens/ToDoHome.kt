@@ -3,6 +3,7 @@ package com.maharaja.todo_sonal.screens
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
@@ -15,6 +16,8 @@ import com.maharaja.todo_sonal.util.Adapter
 import com.maharaja.todo_sonal.R
 import com.maharaja.todo_sonal.controller.ToDoController
 import com.maharaja.todo_sonal.model.ToDo
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class ToDoHome : Fragment() {
@@ -22,6 +25,9 @@ class ToDoHome : Fragment() {
     private var database = ToDoController().getToDo()
     private lateinit var todoRecyclerview : RecyclerView
     private lateinit var todoArrayList : ArrayList<ToDo>
+    private lateinit var todoSearchview : SearchView
+    private lateinit var searchArrayList : ArrayList<ToDo>
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,12 +47,50 @@ class ToDoHome : Fragment() {
 
         //////////////RECYCLER_VIEW_CONFIG//////////////////
         todoRecyclerview = view.findViewById(R.id.todolistview)
+        todoSearchview=view.findViewById(R.id.todo_search)
         todoRecyclerview.layoutManager = LinearLayoutManager(context)
         todoRecyclerview.setHasFixedSize(true)
         todoArrayList = arrayListOf<ToDo>()
+        searchArrayList = arrayListOf<ToDo>()
+
+
         getToDoData()
+        searchData()
+
 
         return view
+    }
+
+    private fun searchData() {
+        todoSearchview.setOnQueryTextListener(object :SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                searchArrayList.clear()
+                var search = newText?.lowercase(Locale.getDefault())
+                if (search!!.isNotEmpty()){
+
+                    todoArrayList.forEach {
+                        if (it.todo!!.lowercase(Locale.getDefault()).contains(search)){
+
+                            searchArrayList.add(it)
+
+                        }
+                    }
+
+                    todoRecyclerview.adapter?.notifyDataSetChanged()
+
+                }else{
+                    searchArrayList.clear()
+                    searchArrayList.addAll(todoArrayList)
+                    todoRecyclerview.adapter?.notifyDataSetChanged()
+                }
+                return false
+            }
+
+        })
     }
 
 
@@ -76,7 +120,10 @@ class ToDoHome : Fragment() {
                         val todo = todoSnapshot.getValue(ToDo::class.java)
                         todoArrayList.add(todo!!)
                     }
-                    todoRecyclerview.adapter = Adapter(todoArrayList)
+                    searchArrayList.addAll(todoArrayList)
+                    todoRecyclerview.adapter = Adapter(searchArrayList)
+
+//                    todoRecyclerview.adapter = Adapter(todoArrayList)
 
                 }
 
