@@ -26,7 +26,6 @@ class ToDoHome : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
-
     }
 
     override fun onCreateView(
@@ -46,6 +45,7 @@ class ToDoHome : Fragment() {
         todoRecyclerview.setHasFixedSize(true)
         todoArrayList = arrayListOf<ToDo>()
         getToDoData()
+
         return view
     }
 

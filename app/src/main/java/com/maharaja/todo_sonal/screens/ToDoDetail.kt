@@ -1,6 +1,7 @@
 package com.maharaja.todo_sonal.screens
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -32,7 +33,10 @@ class ToDoDetail : Fragment() {
         (activity as AppCompatActivity?)?.setSupportActionBar(toolbar)
         toolbar.setTitle("Details")
         toolbar.setNavigationIcon(R.drawable.backicon)
-        toolbar.setNavigationOnClickListener { activity?.onBackPressed() }
+        toolbar.setNavigationOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.navigate_to_toDoHome)
+
+        }
 
         ///////////////GET/SET_ARGS/////////////////
 
@@ -40,8 +44,9 @@ class ToDoDetail : Fragment() {
         view.findViewById<TextView>(R.id.detailtext).text = args?.detailTodoText
 
         ////////////////DELETE_TODO//////////////////
+
         view.findViewById<Button>(R.id.detail_delete_btn).setOnClickListener {
-            var delete_result = toDoController.deleteToDo(args!!.detailTodoText)
+            var delete_result = toDoController.deleteToDo(args!!.detailTodoDate)
             if (delete_result){
                 Toast.makeText(context,"ToDo Delete Success", Toast.LENGTH_SHORT).show()
                 Navigation.findNavController(view).navigate(R.id.navigate_to_toDoHome)
@@ -49,8 +54,9 @@ class ToDoDetail : Fragment() {
         }
 
         /////////////EDIT_TODO//////////////////////
+
         view.findViewById<Button>(R.id.detail_edit_btn).setOnClickListener {
-            val action =ToDoDetailDirections.navigateDetailToEdit(args!!.detailTodoText)
+            val action =ToDoDetailDirections.navigateDetailToEdit(args!!.detailTodoText,args.detailTodoDate)
             Navigation.findNavController(view).navigate(action)
         }
 

@@ -1,19 +1,34 @@
 package com.maharaja.todo_sonal.screens
 
+import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.navigation.Navigation
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
 import com.maharaja.todo_sonal.R
+import com.maharaja.todo_sonal.controller.ToDoController
+import com.maharaja.todo_sonal.model.ToDo
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 
 class ToDoEdit : Fragment() {
 
+    private val toDoController = ToDoController()
+
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,6 +49,14 @@ class ToDoEdit : Fragment() {
             args?.editTodoText
         )
         /////////////EDIT_TODO////////////////////
+        view.findViewById<Button>(R.id.btnedittodo).setOnClickListener {
+            val editText = view.findViewById<EditText>(R.id.edittodotext).text.toString()
+            toDoController.updateToDo(ToDo(editText, args?.editTodoDate))
+            Toast.makeText(context,"ToDo Edit Success", Toast.LENGTH_SHORT).show()
+            val action = ToDoEditDirections.navigateEditToDetail(editText, args?.editTodoDate.toString())
+            Navigation.findNavController(view).navigate(action)
+
+        }
 
         return view
     }

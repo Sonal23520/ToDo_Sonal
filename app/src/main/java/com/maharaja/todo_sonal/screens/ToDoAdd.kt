@@ -44,7 +44,7 @@ class ToDoAdd : Fragment() {
         view.findViewById<Button>(R.id.btnaddtodo).setOnClickListener {
             val todotext = view.findViewById<EditText>(R.id.addtodotext).text.toString()
             val result =
-                toDoController.addToDo(ToDo(todotext, LocalDateTime.now().format(DateTimeFormatter.ISO_DATE)))
+                toDoController.addToDo(ToDo(todotext, LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))))
             if (result==true){
                 Toast.makeText(context,"ToDo Add Success",Toast.LENGTH_SHORT).show()
                 Navigation.findNavController(view).navigate(R.id.navigate_to_toDoHome)

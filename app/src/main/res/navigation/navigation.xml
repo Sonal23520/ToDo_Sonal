@@ -42,6 +42,9 @@
         <action
             android:id="@+id/navigate_detail_to_edit"
             app:destination="@id/toDoEdit" />
+        <argument
+            android:name="detail_todo_date"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/toDoEdit"
@@ -53,6 +56,9 @@
             app:destination="@id/toDoDetail" />
         <argument
             android:name="edit_todo_text"
+            app:argType="string" />
+        <argument
+            android:name="edit_todo_date"
             app:argType="string" />
     </fragment>
 </navigation>

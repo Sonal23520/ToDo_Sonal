@@ -22,10 +22,11 @@ class Adapter(private val userList : ArrayList<ToDo>) : RecyclerView.Adapter<Ada
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
         val todo : TextView = itemView.findViewById(R.id.todoitemtext)
+        var date:String = ""
 
         init {
             itemView.setOnClickListener {
-               val action = ToDoHomeDirections.navigateToToDoDetail(todo.text as String)
+               val action = ToDoHomeDirections.navigateToToDoDetail(todo.text as String,date)
                 Navigation.findNavController(itemView).navigate(action)
             }
         }
@@ -44,6 +45,8 @@ class Adapter(private val userList : ArrayList<ToDo>) : RecyclerView.Adapter<Ada
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.todo.text = userList[position].todo
+        holder.date= userList[position].date.toString()
+
     }
 
     override fun getItemCount(): Int {
