@@ -5,6 +5,9 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardElevation="6dp"
+    android:clickable="true"
+    android:focusable="true"
+
     app:cardCornerRadius="8dp"
     android:layout_margin="6dp">
 
@@ -16,7 +19,7 @@
         >
 
         <TextView
-            android:textColor="#3A3838"
+            android:textColor="#737373"
             android:id="@+id/todoitemtext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

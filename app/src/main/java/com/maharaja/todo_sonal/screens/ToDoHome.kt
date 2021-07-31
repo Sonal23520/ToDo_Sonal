@@ -46,7 +46,6 @@ class ToDoHome : Fragment() {
         todoRecyclerview.setHasFixedSize(true)
         todoArrayList = arrayListOf<ToDo>()
         getToDoData()
-
         return view
     }
 

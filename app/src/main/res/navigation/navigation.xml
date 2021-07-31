@@ -39,6 +39,9 @@
         <action
             android:id="@+id/navigate_to_toDoHome"
             app:destination="@id/toDoHome" />
+        <argument
+            android:name="todotext"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/toDoEdit"

@@ -1,20 +1,34 @@
 package com.maharaja.todo_sonal.util
 
+import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.maharaja.todo_sonal.R
 import com.maharaja.todo_sonal.model.ToDo
+import com.maharaja.todo_sonal.screens.ToDoDetail
+import com.maharaja.todo_sonal.screens.ToDoHome
+import com.maharaja.todo_sonal.screens.ToDoHomeDirections
 
 class Adapter(private val userList : ArrayList<ToDo>) : RecyclerView.Adapter<Adapter.ViewHolder>() {
 
 
-    class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
-
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
         val todo : TextView = itemView.findViewById(R.id.todoitemtext)
+
+        init {
+            itemView.setOnClickListener {
+               val action = ToDoHomeDirections.navigateToToDoDetail(todo.text as String)
+                Navigation.findNavController(itemView).navigate(action)
+            }
+        }
 
     }
 
@@ -23,16 +37,13 @@ class Adapter(private val userList : ArrayList<ToDo>) : RecyclerView.Adapter<Ada
         val itemView = LayoutInflater.from(parent.context).inflate(
             R.layout.todo_cardview,
             parent,false)
+
         return ViewHolder(itemView)
 
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-
-        val currentitem = userList[position]
-
-        holder.todo.text = currentitem.todo
-
+        holder.todo.text = userList[position].todo
     }
 
     override fun getItemCount(): Int {
