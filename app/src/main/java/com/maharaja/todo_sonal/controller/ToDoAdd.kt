@@ -15,6 +15,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.maharaja.todo_sonal.R
+import com.maharaja.todo_sonal.dao.CrudDao
 
 import com.maharaja.todo_sonal.dao.impl.CrudDaoImpl
 import com.maharaja.todo_sonal.model.ToDo
@@ -24,7 +25,7 @@ import java.time.format.DateTimeFormatter
 
 class ToDoAdd : Fragment() {
 
-    private val toDoController = CrudDaoImpl()
+    private val toDoController:CrudDao = CrudDaoImpl()
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(

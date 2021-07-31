@@ -11,9 +11,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import com.maharaja.todo_sonal.util.Adapter
 import com.maharaja.todo_sonal.R
+import com.maharaja.todo_sonal.dao.CrudDao
 import com.maharaja.todo_sonal.dao.impl.CrudDaoImpl
 import com.maharaja.todo_sonal.model.ToDo
 import java.util.*
@@ -22,7 +24,7 @@ import kotlin.collections.ArrayList
 
 class ToDoHome : Fragment() {
 
-    private var database = CrudDaoImpl().getToDo()
+    private var database:DatabaseReference = CrudDaoImpl().getToDo()
     private lateinit var todoRecyclerview : RecyclerView
     private lateinit var todoArrayList : ArrayList<ToDo>
     private lateinit var todoSearchview : SearchView

@@ -14,12 +14,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.Navigation
 import com.maharaja.todo_sonal.R
+import com.maharaja.todo_sonal.dao.CrudDao
 import com.maharaja.todo_sonal.dao.impl.CrudDaoImpl
 
 
 class ToDoDetail : Fragment() {
 
-    private val toDoController = CrudDaoImpl()
+    private val toDoController: CrudDao = CrudDaoImpl()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
