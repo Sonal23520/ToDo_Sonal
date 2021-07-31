@@ -1,5 +1,7 @@
 package com.maharaja.todo_sonal.screens
 
+import android.content.DialogInterface
+import android.graphics.drawable.Icon
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -9,11 +11,13 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.Navigation
 import com.maharaja.todo_sonal.R
 import com.maharaja.todo_sonal.controller.ToDoController
+import java.util.*
 
 
 class ToDoDetail : Fragment() {
@@ -43,14 +47,29 @@ class ToDoDetail : Fragment() {
        var args = arguments?.let { ToDoDetailArgs.fromBundle(it) }
         view.findViewById<TextView>(R.id.detailtext).text = args?.detailTodoText
 
-        ////////////////DELETE_TODO//////////////////
+        /////////////////ALERT//////////////////
+        var alert = context?.let {
+            AlertDialog.Builder(it)
+                .setIcon(R.drawable.delete_icon)
+                .setTitle("Delete")
+                .setMessage("Are you sure?")
+                .setPositiveButton("Delete",DialogInterface.OnClickListener {
+                        dialogInterface, i ->
 
+                        var delete_result = toDoController.deleteToDo(args!!.detailTodoDate)
+                        if (delete_result){
+                        Toast.makeText(context,"ToDo Delete Success", Toast.LENGTH_SHORT).show()
+                        Navigation.findNavController(view).navigate(R.id.navigate_to_toDoHome)
+                        }
+
+                })
+                .setNegativeButton("Cancel",null)
+
+        }
+
+        ////////////////DELETE_TODO//////////////////
         view.findViewById<Button>(R.id.detail_delete_btn).setOnClickListener {
-            var delete_result = toDoController.deleteToDo(args!!.detailTodoDate)
-            if (delete_result){
-                Toast.makeText(context,"ToDo Delete Success", Toast.LENGTH_SHORT).show()
-                Navigation.findNavController(view).navigate(R.id.navigate_to_toDoHome)
-            }
+            alert!!.show()
         }
 
         /////////////EDIT_TODO//////////////////////
